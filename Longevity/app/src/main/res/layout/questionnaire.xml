@@ -12,7 +12,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.domain.longevity.MainActivity">
+    tools:context="com.domain.longevity.Questionnaire">
 
     <TextView
         android:id="@+id/questioner"
@@ -24,7 +24,7 @@
         android:textStyle="bold"
         android:layout_margin="@dimen/margin"/>
     <TextView
-        android:id="@+id/questioner_intro"
+        android:id="@+id/questionerIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/questioner_intro"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/question1"
-        android:layout_below="@+id/questioner_intro"
+        android:layout_below="@+id/questionerIntro"
         android:layout_margin="@dimen/margin"/>
     <EditText
         android:id="@+id/answer1"
