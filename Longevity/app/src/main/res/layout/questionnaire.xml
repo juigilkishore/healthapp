@@ -15,10 +15,10 @@
     tools:context="com.domain.longevity.Questionnaire">
 
     <TextView
-        android:id="@+id/questioner"
+        android:id="@+id/questionerHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/questioner"
+        android:text="@string/questioner_header"
         android:layout_centerHorizontal="true"
         android:textSize="9pt"
         android:textStyle="bold"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/questioner_intro"
-        android:layout_below="@+id/questioner"
+        android:layout_below="@+id/questionerHeader"
         android:layout_margin="@dimen/margin"/>
 
     <TextView

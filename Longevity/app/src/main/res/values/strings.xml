@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Longevity</string>
-    <string name="questioner">Questionnaire</string>
-    <string name="questioner_intro">Fill the below questions</string>
+    <string name="questioner_header">Questionnaire</string>
+    <string name="questioner_intro">Please fill the below questions</string>
     <string name="question1">Question 1</string>
     <string name="question2">Question 2</string>
     <string name="question3">Question 3</string>
@@ -9,5 +9,15 @@
     <string name="question5">Question 5</string>
     <string name="question6">Question 6</string>
     <string name="submit_button">SUBMIT</string>
+
+    <string name="signup_header">SIGN-UP</string>
+    <string name="signup_intro">Please enter your details</string>>
+    <string name="signup_username">Enter username</string>
+    <string name="signup_phone_number">Enter Phone number</string>
+    <string name="signup_email_id">Enter email ID</string>
+    <string name="signup_password">Enter your password</string>
+    <string name="signup_confirm_password">Confirm your password</string>
+    <string name="returning_user"><u>Already existing user ?</u></string>>
+    <string name="signup_button">SIGN-UP</string>
 
 </resources>
