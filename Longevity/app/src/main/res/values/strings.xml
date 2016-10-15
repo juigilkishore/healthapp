@@ -11,13 +11,20 @@
     <string name="submit_button">SUBMIT</string>
 
     <string name="signup_header">SIGN-UP</string>
-    <string name="signup_intro">Please enter your details</string>>
-    <string name="signup_username">Enter username</string>
-    <string name="signup_phone_number">Enter Phone number</string>
-    <string name="signup_email_id">Enter email ID</string>
-    <string name="signup_password">Enter your password</string>
-    <string name="signup_confirm_password">Confirm your password</string>
-    <string name="returning_user"><u>Already existing user ?</u></string>>
+    <string name="signup_intro">Please register your details</string>>
+    <string name="signup_username">Enter your Username</string>
+    <string name="signup_phone_number">Enter your Phone number</string>
+    <string name="signup_email_id">Enter your Email ID</string>
+    <string name="signup_password">Enter your Password</string>
+    <string name="signup_confirm_password">Confirm your Password</string>
+    <string name="returning_user"><u>Already existing user ?</u></string>
     <string name="signup_button">SIGN-UP</string>
+
+    <string name="login_header">LOGIN</string>
+    <string name="login_intro">Please enter your details</string>
+    <string name="login_user_identifier">Your Username or Phone number</string>
+    <string name="login_password">Your Password</string>
+    <string name="login_button">LOGIN</string>
+
 
 </resources>

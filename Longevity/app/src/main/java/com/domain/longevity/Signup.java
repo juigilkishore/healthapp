@@ -16,7 +16,7 @@ public class Signup extends AppCompatActivity {
     }
 
     public void returning_user(View view){
-        Intent intent = new Intent(this, Questionnaire.class);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
@@ -71,7 +71,7 @@ public class Signup extends AppCompatActivity {
     }
 
     public boolean validatePhoneNumber(String number){
-        return number != null && number.length() == 10;
+        return number != null && Patterns.PHONE.matcher(number).matches() && number.length() == 10;
     }
 
     public boolean validateEmail(String email){
