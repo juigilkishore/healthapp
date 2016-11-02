@@ -9,15 +9,24 @@ import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
+    DatabaseHelper longevity_db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        longevity_db = new DatabaseHelper(this);
     }
 
     public void login_button(View view) {
+        Intent intent = getIntent();
+        String user_id = intent.getStringExtra("user_id");
+        String [] qIDList = intent.getStringArrayExtra("question_id_list");
+
         if (validateInputs()) {
-            Intent intent = new Intent(this, Questionnaire.class);
+            intent = new Intent(this, Questionnaire.class);
+            intent.putExtra("user_id", user_id);
+            intent.putExtra("question_id_list", qIDList);
             startActivity(intent);
         }
     }

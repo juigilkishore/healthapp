@@ -1,34 +1,60 @@
 package com.domain.longevity;
 
+import java.util.UUID;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.util.Patterns;
+import android.widget.Toast;
+
 
 public class Signup extends AppCompatActivity {
+
+    DatabaseHelper longevity_db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
+        longevity_db = new DatabaseHelper(this);
     }
 
-    public void returning_user(View view){
+    public void addSignupData() {
+        final UUID ID = UUID.randomUUID();
+        final EditText username = (EditText) findViewById(R.id.signupUser);
+        final EditText phone_number = (EditText) findViewById(R.id.signupPhone);
+        final EditText email = (EditText) findViewById(R.id.signupEmail);
+        final EditText password = (EditText) findViewById(R.id.signupPassword);
+        boolean isUserAdded = longevity_db.insertUserData(
+                ID.toString(), username.getText().toString(), phone_number.getText().toString(),
+                email.getText().toString(), password.getText().toString());
+        if (isUserAdded)
+            Toast.makeText(this, "User data Submitted", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Failed to Submit User !", Toast.LENGTH_SHORT).show();
+    }
+
+    public void returning_user(View view) {
         Intent intent = new Intent(this, Login.class);
+        intent.putExtra("user_id", longevity_db.getUserID());
+        intent.putExtra("question_id_list", longevity_db.getQuestionIDs());
         startActivity(intent);
     }
 
     public void signup_button(View view) {
         if (validateInputs()) {
+            addSignupData();
             Intent intent = new Intent(this, Questionnaire.class);
+            intent.putExtra("user_id", longevity_db.getUserID());
+            intent.putExtra("question_id_list", longevity_db.getQuestionIDs());
             startActivity(intent);
         }
     }
 
-    public boolean validateInputs()
-    {
+    public boolean validateInputs() {
         EditText username = (EditText) findViewById(R.id.signupUser);
         EditText phone_number = (EditText) findViewById(R.id.signupPhone);
         EditText email = (EditText) findViewById(R.id.signupEmail);

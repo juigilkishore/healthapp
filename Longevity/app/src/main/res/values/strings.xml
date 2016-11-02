@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Longevity</string>
     <string name="questioner_header">Questionnaire</string>
-    <string name="questioner_intro">Please fill the below questions</string>
+    <string name="questioner_intro">Please answer the below questions</string>
     <string name="question1">Question 1</string>
     <string name="question2">Question 2</string>
     <string name="question3">Question 3</string>
