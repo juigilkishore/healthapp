@@ -39,8 +39,6 @@ public class Signup extends AppCompatActivity {
 
     public void returning_user(View view) {
         Intent intent = new Intent(this, Login.class);
-        intent.putExtra("user_id", longevity_db.getUserID());
-        intent.putExtra("question_id_list", longevity_db.getQuestionIDs());
         startActivity(intent);
     }
 

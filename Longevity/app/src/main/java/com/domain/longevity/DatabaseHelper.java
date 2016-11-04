@@ -98,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean insertUserData(String id, String username, String phone, String email,
                                   String password) {
-        // Adds a row in the USER table with the provided values
+        // Inserts a row in the USER table with the provided values
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -115,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean insertInfoData(String id, String user_id, String question_id, String answer,
                                   String date) {
-
+        // Inserts a row in INFO table with the provided data
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -130,14 +130,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public String getUserID(){
+        // return the class attribute userID
         return this.userID;
     }
 
     public void setUserID(String id){
+        // set the class attribute userID to be populated in the table as USER_ID
         this.userID = id;
     }
 
     public String[] getQuestionIDs(){
+        // class attribute with a static variable containing the array of question IDs
         return this.questionIDList;
+    }
+
+    public boolean validateReturningUser(String userIdentifier, String password, boolean isPhone){
+        // returns true if the given userIdentifier (username or phone) and the password
+        // matches in Database. Else returns false
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryCol = DatabaseConstants.USERNAME;
+        if (isPhone){
+            queryCol = DatabaseConstants.PHONE;
+        }
+
+        Cursor cursor = db.rawQuery("SELECT " + DatabaseConstants.PASSWORD + ", " + ID + " FROM " +
+                DatabaseConstants.USER_TABLE + " WHERE "+ queryCol +" = '"+ userIdentifier + "'",
+                null);
+        if (!cursor.moveToFirst()) {
+            cursor.close();
+            // Can be a false alarm in the UI, because of this return statement
+            return false;
+        }
+        String retrievedPassword = cursor.getString(
+                cursor.getColumnIndex(DatabaseConstants.PASSWORD));
+        String userID = cursor.getString(cursor.getColumnIndex(ID));
+        setUserID(userID);
+
+        return retrievedPassword.equals(password);
     }
 }

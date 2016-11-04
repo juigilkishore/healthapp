@@ -39,6 +39,8 @@ public class Questionnaire extends AppCompatActivity {
         String user_id = intent.getStringExtra("user_id");
         String [] qIDList = intent.getStringArrayExtra("question_id_list");
 
+        // TODO: v0.4 to add notion of time to differentiate between a new entry and update case
+        // write a method to call insertInfoData or updateInfoData based on time
         boolean isInfoAdded1 = longevity_db.insertInfoData(ID1.toString(), user_id, qIDList[0],
                 ans1.getText().toString(), null);
         boolean isInfoAdded2 = longevity_db.insertInfoData(ID2.toString(), user_id, qIDList[1],

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.text.TextUtils;
 
 public class Login extends AppCompatActivity {
 
@@ -19,14 +20,10 @@ public class Login extends AppCompatActivity {
     }
 
     public void login_button(View view) {
-        Intent intent = getIntent();
-        String user_id = intent.getStringExtra("user_id");
-        String [] qIDList = intent.getStringArrayExtra("question_id_list");
-
         if (validateInputs()) {
-            intent = new Intent(this, Questionnaire.class);
-            intent.putExtra("user_id", user_id);
-            intent.putExtra("question_id_list", qIDList);
+            Intent intent = new Intent(this, Questionnaire.class);
+            intent.putExtra("user_id", longevity_db.getUserID());
+            intent.putExtra("question_id_list", longevity_db.getQuestionIDs());
             startActivity(intent);
         }
     }
@@ -46,11 +43,9 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    public boolean validateUserPasswordCombination(String user_identifier, String password){
-        // TODO: Add logic to check in the DB for the existence of the user and the combination
-        // TODO: with password return boolean accordingly
-        // TODO: Add logic to check in the DB with the provided password
-        return true;
+    public boolean validateUserPasswordCombination(String userIdentifier, String password) {
+        boolean isPhone = TextUtils.isDigitsOnly(userIdentifier);
+        return longevity_db.validateReturningUser(userIdentifier, password, isPhone);
     }
 
 }
